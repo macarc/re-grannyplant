@@ -1,0 +1,262 @@
+/* A mess of styles that works */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+main {
+  padding: 1rem;
+}
+* {
+  font-family: sans-serif;
+}
+table {
+  width: 100%;
+}
+.plant-table th {
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  background: green;
+  color: white;
+  padding: 0.6rem;
+}
+.plant-table td {
+  padding: 0.6rem;
+  border-bottom: 2px solid grey;
+}
+
+td p {
+  margin: 0;
+}
+
+.plant-table tr:not(:first-child) {
+  cursor: pointer;
+}
+.plant-table tr:not(:first-child):hover {
+  background: blanchedalmond;
+}
+
+header {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+header button {
+  flex: 1;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+header button.selected {
+  background: green;
+  color: white;
+}
+h2 {
+  background: green;
+  color: white;
+  padding: 0.6rem;
+}
+
+li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+li:hover {
+  background: blanchedalmond;
+}
+.specific-area li {
+  margin: 0.3rem;
+  padding: 0.1rem;
+  background: blanchedalmond;
+}
+.specific-area {
+  margin-bottom: 0.2rem;
+  list-style-type: none;
+  padding: 0.5rem;
+}
+
+details {
+  margin: 0.2rem 0;
+}
+
+.add-plant {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-plant button,
+.add-plant-to-specific-area button,
+.done,
+.cancel {
+  background: green;
+  font-size: 1.2rem;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 3px;
+  margin: 0.5rem 0;
+  margin-right: 0;
+  margin-left: auto;
+}
+.add-plant-to-specific-area {
+  padding-left: 1rem;
+}
+.add-plant-to-specific-area button {
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
+  margin-top: 0rem;
+}
+
+.cancel {
+  background: none;
+  border: 3px solid green;
+  padding: calc(0.6rem - 3px);
+  color: green;
+  margin-right: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  margin-right: 2rem;
+}
+
+th {
+  text-align: left;
+}
+
+.plant-data {
+  margin: 3rem 0;
+}
+
+.area {
+  background: blanchedalmond;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+
+.data {
+  font-weight: bold;
+}
+
+.rhs {
+  background: gold;
+  padding: 1rem;
+}
+
+/* So there's no accidental selection while scrolling */
+.area-text {
+  user-select: none;
+}
+
+label {
+  display: block;
+  padding-top: 1rem;
+}
+input[type='text'],
+textarea {
+  display: block;
+  margin-left: 1rem;
+  width: calc(100vw - 1rem - 2rem);
+}
+
+.inputArea {
+  background: blanchedalmond;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+select {
+  font-size: 1.2rem;
+  margin: 0.2rem 0;
+  display: block;
+}
+
+.add-area {
+  color: green;
+  border: 3px solid green;
+  background: none;
+  font-size: 1.1rem;
+  margin: 1rem 0rem;
+}
+
+.remove-area {
+  color: red;
+  border: 3px solid red;
+  background: none;
+  font-size: 1.1rem;
+  margin: 1rem 0rem;
+}
+
+.plant-after-adding-view {
+  background: blanchedalmond;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+#sign-in input {
+  display: block;
+  margin: auto;
+}
+#sign-in input[type='submit'] {
+  margin: auto;
+  margin-top: 2rem;
+}
+
+#search {
+  margin-top: 2rem;
+  position: sticky;
+  top: 0.2rem;
+}
+.area-in-list {
+  font-size: 0.8rem;
+  margin: 0.2rem 0;
+  background: blanchedalmond;
+}
+
+.spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.spinner-in {
+  background: green;
+  margin: auto;
+  margin-top: calc(50vh - 50px);
+  width: 100px;
+  height: 100px;
+  animation-duration: 2s;
+  animation-name: loader;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic;
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.incorrect-login {
+  padding: 0.6rem;
+  background: blanchedalmond;
+}
+
+button.save-backup {
+  margin-left: 0;
+  background: none;
+  border: 3px solid green;
+  padding: calc(0.6rem - 3px);
+  color: green;
+}

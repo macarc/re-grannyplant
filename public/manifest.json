@@ -1,0 +1,19 @@
+{
+  "name": "GrannyPlant",
+  "short_name": "GrannyPlant",
+  "description": "Manage your plants.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#008000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "type": "image/png", "sizes": "32x32"
+    },
+    {
+      "src": "/icon.png",
+      "type": "image/png", "sizes": "512x512"
+    }
+  ]
+}
