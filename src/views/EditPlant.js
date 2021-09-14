@@ -8,7 +8,13 @@ import {
   initialisePlant,
   numberOfGeneralAreas,
   numberOfSpecificAreas,
+  season,
 } from '../plants';
+
+function log(a) {
+  console.log(a);
+  return a;
+}
 
 export const EditPlant = new View('edit-plant', '/edit-plant');
 
@@ -23,6 +29,7 @@ EditPlant.setup = function (
   } else {
     this.plant = plant;
   }
+  this.originalPlant = JSON.stringify(this.plant);
   if (nextView) {
     this.nextView = nextView;
     this.nextViewArgs = nextViewArgs;
@@ -87,6 +94,12 @@ EditPlant.view = function () {
         {
           on: {
             click: () => {
+              if (this.plants.indexOf(this.plant) !== -1) {
+                const original = JSON.parse(this.originalPlant);
+                Object.keys(original).forEach(
+                  (key) => (this.plant[key] = original[key])
+                );
+              }
               this.goto(this.failView, ...this.failViewArgs);
             },
           },
@@ -111,13 +124,6 @@ EditPlant.view = function () {
   ]);
 };
 EditPlant.viewAreaWidget = function () {
-  const dateOf = (date) => {
-    try {
-      return new Date(date).toISOString().slice(0, 10);
-    } catch {
-      return null;
-    }
-  };
   return h('div', [
     ...this.plant.areas.map((area) =>
       h('div.inputArea', [
@@ -162,18 +168,102 @@ EditPlant.viewAreaWidget = function () {
           : null,
         h('label', [
           'Date: ',
-          h('input', {
-            on: {
-              change: (e) => {
-                area.date = dateOf(e.target.value);
-                this.redraw();
+          h(
+            'select',
+            {
+              attrs: { placeholder: '--' },
+              on: {
+                change: (e) => {
+                  if (!area.date) area.date = [];
+                  area.date[1] = parseInt(e.target.value);
+                  if (area.date[1] === -1) area.date[1] = null;
+                  this.redraw();
+                },
               },
             },
-            attrs: {
-              type: 'date',
-              value: dateOf(area.date),
+            [
+              h(
+                'option',
+                { attrs: { value: -1, selected: !area.date || !area.date[1] } },
+                ['None']
+              ),
+              h(
+                'option',
+                {
+                  attrs: {
+                    value: 0,
+                    selected: (area.date && area.date[1] === 0) || false,
+                  },
+                },
+                [season(0)]
+              ),
+              h(
+                'option',
+                {
+                  attrs: {
+                    value: 1,
+                    selected: (area.date && area.date[1] === 1) || false,
+                  },
+                },
+                [season(1)]
+              ),
+              h(
+                'option',
+                {
+                  attrs: {
+                    value: 2,
+                    selected: (area.date && area.date[1] === 2) || false,
+                  },
+                },
+                [season(2)]
+              ),
+              h(
+                'option',
+                {
+                  attrs: {
+                    value: 3,
+                    selected: (area.date && area.date[1] === 3) || false,
+                  },
+                },
+                [season(3)]
+              ),
+            ]
+          ),
+          h(
+            'select',
+            {
+              on: {
+                change: (e) => {
+                  if (!area.date) area.date = [];
+                  area.date[0] = parseInt(e.target.value);
+                  if (area.date[0] === -1) area.date[0] = null;
+                  this.redraw();
+                },
+              },
             },
-          }),
+            [
+              h(
+                'option',
+                { attrs: { value: -1, selected: !area.date || !area.date[0] } },
+                ['No year']
+              ),
+              ...[...new Array(new Date().getFullYear() - 1999).keys()]
+                .reverse()
+                .map((n) => n + 2000)
+                .map((year) =>
+                  h(
+                    'option',
+                    {
+                      attrs: {
+                        value: year,
+                        selected: (area.date && area.date[0] === year) || false,
+                      },
+                    },
+                    [year]
+                  )
+                ),
+            ]
+          ),
         ]),
         h('label', [
           'Number: ',

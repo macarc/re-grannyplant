@@ -1424,7 +1424,7 @@ export const plants = [
     {
       "general": 5,
       "specific": 0,
-      "date": "Semptember 2009",
+      "date": "September 2009",
       "number": 1
     },
     {

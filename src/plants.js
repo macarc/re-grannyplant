@@ -12,14 +12,16 @@ const areas = [
       'Rockface bed',
     ],
   },
-  { name: 'Road fence bed', areas: [''] },
   {
-    name: 'Lawn Garden',
+    name: 'Road fence bed',
+    areas: ['Blackthorn to Olearia', 'Olearia to Hawthorn twins', 'Far corner'],
+  },
+  {
+    name: 'Lawn garden',
     areas: [
       "Icky's seat and sundial bed",
       'House end',
       'Griselinia bed',
-      'Far corner',
       'Far bed',
     ],
   },
@@ -114,6 +116,8 @@ const areas = [
   },
 ];
 
+const seasons = ['Spring', 'Summer', 'Autumn', 'Winter'];
+
 export function generalArea(general) {
   return areas[general].name;
 }
@@ -124,6 +128,10 @@ export function specificArea(general, specific) {
 export const numberOfGeneralAreas = areas.length;
 export function numberOfSpecificAreas(general) {
   return areas[general].areas.length;
+}
+
+export function season(s) {
+  return seasons[s];
 }
 
 export function initialisePlant() {

@@ -12,7 +12,7 @@ import {
 } from 'snabbdom';
 import { app } from '../fb';
 import { saveBackup, saveToDb, readPlants } from '../db';
-import { generalArea, specificArea } from '../plants';
+import { generalArea, specificArea, season } from '../plants';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const patch = init([
@@ -39,6 +39,10 @@ onAuthStateChanged(View.prototype.auth, updateAuth);
 // React to auth change
 async function updateAuth(user) {
   if (user) {
+    function log(a) {
+      console.log(a);
+      return a;
+    }
     View.prototype.plants = await readPlants();
     View.prototype.goto('plants');
   } else {
@@ -170,16 +174,10 @@ View.prototype.viewPlantDataTable = function (plant2) {
                 )}`,
               ]),
             ]),
-            area.date
+            area.date && area.date[0]
               ? h('p', [
                   h('span', ['Since ']),
-                  h('span.data', [
-                    new Date(area.date)
-                      .toDateString()
-                      .split(' ')
-                      .splice(1)
-                      .join(' '),
-                  ]),
+                  h('span.data', [season(area.date[1]), ' ', area.date[0]]),
                 ])
               : null,
           ]
