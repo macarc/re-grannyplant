@@ -3,14 +3,14 @@
 import { View } from './View';
 
 // Effectful imports
-import { PlantList } from './PlantList';
-import { AddAnother } from './AddAnother';
-import { AreaList } from './AreaList';
-import { EditPlant } from './EditPlant';
-import { ViewPlant } from './ViewPlant';
-import { Search } from './Search';
-import { SignIn } from './SignIn';
-import { Spinner } from './Spinner';
+import './PlantList';
+import './AddAnother';
+import './AreaList';
+import './EditPlant';
+import './ViewPlant';
+import './Search';
+import './SignIn';
+import './Spinner';
 
 export default start = function () {
   View.prototype.goto('spinner', new Promise(() => null));
