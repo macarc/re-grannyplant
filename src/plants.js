@@ -89,7 +89,7 @@ const areas = [
       'Pond area, sides and front',
       'Pond area, behind',
       'Past pond',
-      'Slope apposite door',
+      'Slope opposite door',
     ],
   },
   { name: 'Gable end', areas: ['Around fence by grass steps', 'Banking'] },
