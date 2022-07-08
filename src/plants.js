@@ -100,7 +100,6 @@ const areas = [
       'At front, at lunchroom window',
       'At front, at front door',
       'At front, at sittingroom window',
-      'Roadside gable, at stone wall',
       'Roadside gable, near postbox',
       'Roadside gable, by wall bench',
       'Roadside gable, by house wall',
